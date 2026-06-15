@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+#if !ROMA_UNO
 using System.Windows.Interop;
+#endif
 using System.Windows.Media;
 
 using TomsToolbox.Essentials;
@@ -28,6 +30,7 @@ public static class DependencyObjectExtensions
         return self.GetValue(property).SafeCast<T>();
     }
 
+#if !ROMA_UNO
     /// <summary>
     /// Tracks the changes of the specified property.
     /// </summary>
@@ -52,7 +55,9 @@ public static class DependencyObjectExtensions
             remove => _dependencyPropertyDescriptor?.RemoveValueChanged(dependencyObject, value);
         }
     }
+#endif
 
+#if !ROMA_UNO
     /// <summary>
     /// Gets the window handle of the HwndSource hosting this item.
     /// </summary>
@@ -80,7 +85,7 @@ public static class DependencyObjectExtensions
         var hwndSource = (HwndSource)(PresentationSource.FromDependencyObject(item) ?? throw new ArgumentException("Item not part of a valid visual tree.", nameof(item)));
         var compositionTarget = hwndSource.CompositionTarget ?? throw new ArgumentException("Item not part of a valid visual tree.", nameof(item));
         var rootVisual = (FrameworkElement)compositionTarget.RootVisual ?? throw new ArgumentException("Item not part of a valid visual tree.", nameof(item));
-    
+
         return rootVisual;
     }
 
@@ -103,6 +108,7 @@ public static class DependencyObjectExtensions
 
         return rootVisual;
     }
+#endif
 
     /// <summary>
     /// Returns an enumeration of elements that contains this element, and the ancestors in the visual tree of this element.
