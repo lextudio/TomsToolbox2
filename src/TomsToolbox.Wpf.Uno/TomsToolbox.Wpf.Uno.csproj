@@ -47,6 +47,9 @@
     <Compile Include="..\TomsToolbox.Wpf\ObservableObjectBase.RelayedEvents.cs" Link="ObservableObjectBase.RelayedEvents.cs" />
     <Compile Include="..\TomsToolbox.Wpf\ObservableObject.cs" Link="ObservableObject.cs" />
     <Compile Include="..\TomsToolbox.Wpf\Throttle.cs" Link="Throttle.cs" />
+    <!-- DispatcherThrottle: used by AssemblyTreeModel.refreshThrottle. Depends only on
+         DispatcherExtensions.CurrentDispatcher + DispatcherPriority (both provided here). -->
+    <Compile Include="..\TomsToolbox.Wpf\DispatcherThrottle.cs" Link="DispatcherThrottle.cs" />
     <!-- DependencyObjectExtensions: VisualAncestors/AncestorsAndSelf/TryFindAncestorOrSelf helpers.
          HwndSource/PresentationSource methods guarded by #if !ROMA_UNO in the upstream file. -->
     <Compile Include="..\TomsToolbox.Wpf\DependencyObjectExtensions.cs" Link="DependencyObjectExtensions.cs" />
