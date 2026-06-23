@@ -16,6 +16,7 @@
     <!-- ROMA_UNO guards HwndSource/PresentationSource methods in linked upstream files
          that have no WinUI/Uno equivalent (see DependencyObjectExtensions.cs). -->
     <DefineConstants>$(DefineConstants);ROMA_UNO</DefineConstants>
+    <UseNuGetPackages>true</UseNuGetPackages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +27,11 @@
     <ProjectReference Include="..\TomsToolbox.Essentials\TomsToolbox.Essentials.csproj" />
     <ProjectReference Include="..\TomsToolbox.Composition\TomsToolbox.Composition.csproj" />
     <ProjectReference Include="..\TomsToolbox.ObservableCollections\TomsToolbox.ObservableCollections.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseNuGetPackages)' == 'true'">
+    <PackageReference Include="LeXtudio.Windows" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseNuGetPackages)' != 'true'">
     <ProjectReference Include="..\..\..\WindowsShims\src\LeXtudio.Windows\LeXtudio.Windows.csproj" />
   </ItemGroup>
 
